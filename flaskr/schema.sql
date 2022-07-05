@@ -1,3 +1,5 @@
+-- Removed CASCADE from drops
+
 DROP TABLE IF EXISTS available_interviewers;
 DROP TABLE IF EXISTS interviews;
 DROP TABLE IF EXISTS interviewers;
