@@ -1,10 +1,8 @@
-PRAGMA foreign_keys = ON;
-
-DROP TABLE IF EXISTS available_interviewers CASCADE;
-DROP TABLE IF EXISTS interviews CASCADE;
-DROP TABLE IF EXISTS interviewers CASCADE;
-DROP TABLE IF EXISTS appointments CASCADE;
-DROP TABLE IF EXISTS days CASCADE;
+DROP TABLE IF EXISTS available_interviewers;
+DROP TABLE IF EXISTS interviews;
+DROP TABLE IF EXISTS interviewers;
+DROP TABLE IF EXISTS appointments;
+DROP TABLE IF EXISTS days;
 
 CREATE TABLE days (
   id SERIAL PRIMARY KEY NOT NULL,
