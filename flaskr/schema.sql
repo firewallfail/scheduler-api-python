@@ -1,3 +1,5 @@
+PRAGMA foreign_keys = ON;
+
 DROP TABLE IF EXISTS available_interviewers CASCADE;
 DROP TABLE IF EXISTS interviews CASCADE;
 DROP TABLE IF EXISTS interviewers CASCADE;
