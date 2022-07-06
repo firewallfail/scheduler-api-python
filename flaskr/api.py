@@ -16,9 +16,26 @@ def appointments():
 @bp.route('/days', methods=(['GET']))
 def days():
     if request.method == 'GET':
+        db = get_db()
+        try:
+            days = db.execute(
+                'SELECT * FROM days'
+            ).fetchall()
+        except db.IntegrityError:
+            error = 'Error'
+            print(error)
         return 'days'
 
 @bp.route('/interviewers', methods=(['GET']))
 def interviewers():
     if request.method == 'GET':
+        db = get_db()
+        try:
+            interviewers = db.execute(
+                'SELECT * FROM interviewers'
+            ).fetchall()
+            print(interviewers[0]['name'])
+        except db.IntegrityError:
+            error = 'Error'
+            print(error)
         return 'interviewers'
