@@ -33,6 +33,6 @@ def create_app(test_config=None):
         return 'Hello, World!'
 
     from . import api
-    app.register_blueprint(api.pb)
+    app.register_blueprint(api.bp)
 
     return app

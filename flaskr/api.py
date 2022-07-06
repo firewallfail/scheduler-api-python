@@ -7,3 +7,18 @@ from flask import (
 from flaskr.db import get_db
 
 bp = Blueprint('api', __name__, url_prefix='/api')
+
+@bp.route('/appointments', methods=('GET', 'PUT', 'DELETE'))
+def appointments():
+    if request.method == 'GET':
+        return 'appointments'
+
+@bp.route('/days', methods=(['GET']))
+def days():
+    if request.method == 'GET':
+        return 'days'
+
+@bp.route('/interviewers', methods=(['GET']))
+def interviewers():
+    if request.method == 'GET':
+        return 'interviewers'
