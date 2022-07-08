@@ -1,5 +1,7 @@
 import functools
 
+import json
+
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for
 )
@@ -11,6 +13,18 @@ bp = Blueprint('api', __name__, url_prefix='/api')
 @bp.route('/appointments', methods=('GET', 'PUT', 'DELETE'))
 def appointments():
     if request.method == 'GET':
+        db = get_db()
+        try:
+            appointments = db.execute(
+                'SELECT * FROM appointments'
+            ).fetchall()
+            json_appointments = []
+            for appointment in appointments:
+                json_appointments.append(json.dumps(dict(appointment)))
+            print(json_appointments)
+        except db.IntegrityError:
+            error = 'Error'
+            print(error)
         return 'appointments'
 
 @bp.route('/days', methods=(['GET']))
