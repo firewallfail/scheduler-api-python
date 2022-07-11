@@ -18,14 +18,14 @@ def appointments():
             appointments = db.execute(
                 'SELECT * FROM appointments'
             ).fetchall()
-            json_appointments = []
+            json_appointments = ''
             for appointment in appointments:
-                json_appointments.append(json.dumps(dict(appointment)))
+                json_appointments += (json.dumps(dict(appointment)))
             print(json_appointments)
         except db.IntegrityError:
             error = 'Error'
             print(error)
-        return 'appointments'
+        return json_appointments
 
 @bp.route('/days', methods=(['GET']))
 def days():
