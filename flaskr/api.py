@@ -18,14 +18,13 @@ def appointments():
             appointments = db.execute(
                 'SELECT * FROM appointments'
             ).fetchall()
-            json_appointments = ''
-            for appointment in appointments:
-                json_appointments += (json.dumps(dict(appointment)))
-            print(json_appointments)
+            appointments_dict = {}
+            for x in appointments:
+                appointments_dict[x['id']] = {'time': x['time'], 'day_id': x['day_id']}
         except db.IntegrityError:
             error = 'Error'
             print(error)
-        return json_appointments
+        return json.dumps(appointments_dict)
 
 @bp.route('/days', methods=(['GET']))
 def days():
@@ -35,10 +34,13 @@ def days():
             days = db.execute(
                 'SELECT * FROM days'
             ).fetchall()
+            day_dict = {}
+            for x in days:
+                day_dict[x['id']] = {'name': x['name']}
         except db.IntegrityError:
             error = 'Error'
             print(error)
-        return 'days'
+        return json.dumps(day_dict)
 
 @bp.route('/interviewers', methods=(['GET']))
 def interviewers():
@@ -48,8 +50,11 @@ def interviewers():
             interviewers = db.execute(
                 'SELECT * FROM interviewers'
             ).fetchall()
-            print(interviewers[0]['name'])
+            print(interviewers[0].keys())
+            interviewers_dict = {}
+            for x in interviewers:
+                interviewers_dict[x['id']] = {'name': x['name'], 'avatar': x['avatar']}
         except db.IntegrityError:
             error = 'Error'
             print(error)
-        return 'interviewers'
+        return json.dumps(interviewers_dict)
