@@ -50,7 +50,6 @@ def interviewers():
             interviewers = db.execute(
                 'SELECT * FROM interviewers'
             ).fetchall()
-            print(interviewers[0].keys())
             interviewers_dict = {}
             for x in interviewers:
                 interviewers_dict[x['id']] = {'name': x['name'], 'avatar': x['avatar']}
